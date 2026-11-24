@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "buildCommand": "",
+  "outputDirectory": "web",
+  "functions": {
+    "api/**/*.mjs": {
+      "maxDuration": 60,
+      "includeFiles": "{server,web}/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index?__pm_path=:path*"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/weekly",
+      "schedule": "0 14 * * 0"
+    }
+  ]
+}
